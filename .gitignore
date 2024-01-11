@@ -1,0 +1,5 @@
+flask_script/venv
+my_script/venv
+flask_script/.env
+flask_script/__pycache__
+
