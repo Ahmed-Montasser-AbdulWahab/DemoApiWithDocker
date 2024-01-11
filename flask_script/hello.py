@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request
 
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -26,5 +28,5 @@ def hello_world():
     return jsonify(msg)
  
 if __name__ == '__main__':
-    port = os.getenv('FLASK_PORT', '5000')
-    app.run()
+    port = os.getenv('PORT','5000')
+    app.run(debug=True, port=port)
