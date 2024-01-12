@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+
+
+  web_api:
+    container_name: web_api
+    build:
+      context: ./flask_script
+      dockerfile: Dockerfile
+    ports:
+      - "2500:2500"
+    env_file:
+      - ./flask_script/.env
+    volumes:
+      - ./flask_script/hello.py:/app/hello.py:ro
+      - /app/opt/venv
+    networks:
+      - api_net
+    stdin_open: false
+    tty: false
+
+
+  client_script:
+    container_name: client_script
+    build:
+      context: ./my_script
+      dockerfile: Dockerfile
+    volumes:
+      - ./my_script/index.py:/app/index.py:ro
+      - /app/opt/venv
+    stdin_open: true
+    tty: true
+    depends_on:
+      - web_api
+    networks:
+      - api_net
+
+networks:
+  api_net:
+    

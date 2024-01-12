@@ -1,5 +1,4 @@
 FROM python:3.13-rc-slim
-
 WORKDIR /app
 
 COPY requirements.txt requirements.txt
@@ -15,4 +14,10 @@ RUN pip install -Ur requirements.txt
 
 COPY . .
 
-CMD ["python", "index.py"]
+# Keeps Python from generating .pyc files in the container
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Turns off buffering for easier container logging
+ENV PYTHONUNBUFFERED=1
+
+CMD ["python", "-u", "index.py"]

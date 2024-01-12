@@ -1,5 +1,5 @@
 FROM python:3.13-rc-slim
-ENV PYTHONUNBUFFERED 1
+
 
 WORKDIR /app
 
@@ -19,9 +19,14 @@ COPY . .
 ARG DEFAULT_PORT 5000
 
 ENV PORT $DEFAULT_PORT
+# Keeps Python from generating .pyc files in the container
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Turns off buffering for easier container logging
+ENV PYTHONUNBUFFERED=1
 
 EXPOSE $PORT
 
 #CMD ["python", "-m" ,"flask", "--app", "hello", "run" , "--host=0.0.0.0"]
 
-CMD ["python", "hello.py"]
+CMD ["python", "-u", "hello.py"]

@@ -7,7 +7,7 @@ import json
 
 # print(response.json())
 
-url_api = "http://myFlask:5000/incomes"
+url_api = "http://web_api:2500/incomes"
 
 method = input('GET OR POST : ')
 
