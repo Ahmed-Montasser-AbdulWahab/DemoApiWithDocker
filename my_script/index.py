@@ -9,19 +9,21 @@ import json
 
 url_api = "http://web_api:2500/incomes"
 
-method = input('GET OR POST : ')
+print('GET OR POST : ', flush=True)
+method = input()
 
 if method=='GET' :
     response = requests.get(url_api)
     print(response.json())
 
 elif method=='POST' :
-    amount = int(input('Enter amount: '))
+    print('Enter amount: ', flush=True)
+    amount = int(input())
     d = { 'description': 'salary', 'amount': amount }
     response = requests.post(url=url_api, json=json.dumps(d))
     print(response.status_code)
 
 else :
-    print('Not allowed')
+    print('Not allowed', flush=True)
 
 
