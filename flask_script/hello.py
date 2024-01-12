@@ -29,4 +29,4 @@ def hello_world():
  
 if __name__ == '__main__':
     port = os.getenv('PORT','5000')
-    app.run(debug=True, port=port)
+    app.run(host="0.0.0.0",port=int(port), load_dotenv=True)

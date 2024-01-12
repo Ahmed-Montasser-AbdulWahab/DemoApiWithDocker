@@ -22,4 +22,6 @@ ENV PORT $DEFAULT_PORT
 
 EXPOSE $PORT
 
-CMD ["python", "-m" ,"flask", "--app", "hello", "run" , "--host=0.0.0.0"]
+#CMD ["python", "-m" ,"flask", "--app", "hello", "run" , "--host=0.0.0.0"]
+
+CMD ["python", "hello.py"]
